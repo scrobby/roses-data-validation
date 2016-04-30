@@ -13,3 +13,14 @@ To be used in conjunction with the York Vision Roses plugin. This makes sure tha
 5. In terminal, run `node .` in this directory.
 
 In this directory you will now see a new file called `newdata.json`. This contains a new JSON file with all of the event IDs matching the event key.
+
+### Debugging
+In `index.js` you can set the `debug` variable to true in order to see every change the script is making (if you have a lot of changes to be made this may create a lot of output).
+
+### Sample Data
+If the script does not find a `data.json` file it will automatically use the `sampledata.json` file so you can see what the output looks like.
+
+## TODO
+[ ] Make the script check for any conflicting keys
+[ ] Return an error if a certain day isn't found
+[ ] Create more tests to further validate (e.g. checking that all of the score data is there and is valid)
