@@ -1,12 +1,12 @@
 {
-  "name": "roses-fix",
-  "version": "1.0.0",
-  "description": "",
+  "name": "roses-data-validation",
+  "version": "0.1.0",
+  "description": "A way to ensure that the inputted data for Roses will not result in scores not being saved.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Carl Goldsmith",
   "license": "ISC",
   "dependencies": {
     "fs": "0.0.2"
