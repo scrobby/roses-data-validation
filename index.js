@@ -1,11 +1,27 @@
-console.log('Now running');
-
 //set this to true to see more information about the data that was changed
 var debug = false;
 
 //This loads in the data. As we aren't working with a large file and there are no other operations, we don't have to worry about doing it asyncronously
 var fs = require('fs');
-var data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+
+var fileName = 'data.json';
+var usingSample = false;
+
+//check if 'data.json' exists and use the sample data if not
+try {
+    fs.accessSync(fileName, fs.F_OK);
+} catch (e) {
+    fileName = 'sampledata.json';
+    usingSample = true;
+}
+
+var data = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+
+if (!usingSample) {
+    console.log('Now running');
+} else {
+    console.log('Now running using sample data');
+}
 
 //Roses always takes place Fri-Sun, with a few events before, so hard-coding these values isn't that big of a deal at the moment.
 //All of Chris King's Roses plugins also have these hard coded, so this will also make sure that it works properly with them.
@@ -68,6 +84,10 @@ function reformatChangesJSON(jsonData) {
     changesString = changesString.replace(/,total.*/, "");
     changesString = changesString.replace(/,/g, "\n - ");
     changesString = changesString.replace(/:/g, ": ");
+
+    if (usingSample) {
+        changesString = "SAMPLE DATA:\n" + changesString;
+    }
 
     return changesString;
 }
